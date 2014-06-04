@@ -1,0 +1,42 @@
+<h1>Listing projects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Width</th>
+      <th>Height</th>
+      <th>Type</th>
+      <th>Fabric type</th>
+      <th>Fabric count</th>
+      <th>Fabric colour</th>
+      <th>Thread type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.width %></td>
+        <td><%= project.height %></td>
+        <td><%= project.project_type %></td>
+        <td><%= project.fabric_type %></td>
+        <td><%= project.fabric_count %></td>
+        <td><%= project.fabric_colour %></td>
+        <td><%= project.thread_type %></td>
+        <td><%= link_to 'Show', project %></td>
+        <% if project.user == current_user %>
+        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if user_signed_in? %>
+<%= link_to 'New Project', new_project_path %>
+<% end %>

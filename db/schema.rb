@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603222152) do
+ActiveRecord::Schema.define(version: 20140604112543) do
+
+  create_table "projects", force: true do |t|
+    t.string   "name"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "project_type"
+    t.string   "fabric_type"
+    t.integer  "fabric_count"
+    t.string   "fabric_colour"
+    t.string   "thread_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "finished_image_file_name"
+    t.string   "finished_image_content_type"
+    t.integer  "finished_image_file_size"
+    t.datetime "finished_image_updated_at"
+  end
+
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
