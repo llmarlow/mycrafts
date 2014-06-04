@@ -1,46 +1,22 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'Back', projects_path, class: "btn btn-primary" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-<%= image_tag @project.finished_image.url(:medium) %>
-<p>
-  <strong>Width:</strong>
-  <%= @project.width %>
-</p>
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">  
+    <div class="panel panel-default">
+      <div class="panel-heading center"><h3><%= @project.name %></h3></div>
+          <div class="panel-body">
+             <div class="col-md-6">
+        <%= image_tag @project.finished_image.url(:medium), class: "img-thumbnail"  %>
+  </div>
 
-<p>
-  <strong>Height:</strong>
-  <%= @project.height %>
-</p>
-
-<p>
-  <strong>Project Type:</strong>
-  <%= @project.project_type %>
-</p>
-
-<p>
-  <strong>Fabric type:</strong>
-  <%= @project.fabric_type %>
-</p>
-
-<p>
-  <strong>Fabric count:</strong>
-  <%= @project.fabric_count %>
-</p>
-
-<p>
-  <strong>Fabric colour:</strong>
-  <%= @project.fabric_colour %>
-</p>
-
-<p>
-  <strong>Thread type:</strong>
-  <%= @project.thread_type %>
-</p>
-
-<% if @project.user == current_user %>
-<%= link_to 'Edit', edit_project_path(@project) %> |
+  <div class="col-md-4">
+    <p><strong><%= @project.width %> cm by <%= @project.height %> cm</strong><p>
+    <p>Stitched on <%= @project.fabric_count %> count <%= @project.fabric_colour %> <%= @project.fabric_type %> using <%= @project.thread_type %> threads.</p>
+    <% if @project.user == current_user %>
+<%= link_to 'Edit', edit_project_path(@project) %> 
 <% end %>
-<%= link_to 'Back', projects_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
